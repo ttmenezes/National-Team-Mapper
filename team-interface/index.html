@@ -3,8 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>National Team Map</title>
     <link rel="stylesheet" href="./styles.css" />
+    // map links
+    <link
+      rel="stylesheet"
+      href="../map/jquery-jvectormap-2.0.1.css"
+      type="text/css"
+      media="screen"
+    />
+    <script src="../map/jquery-3.5.1.js"></script>
+    <script src="../map/jquery-jvectormap-2.0.5.min.js"></script>
+    <script src="../map/jquery-jvectormap-world-mill.js"></script>
   </head>
   <body>
     <header>
@@ -17,7 +27,7 @@
           </div>
         </div>
         <div id="map-container" class="card">
-          <img id="map" src="./map.png" />
+          <div id="world-map" style="width: 720px; height: 400px;"></div>
         </div>
       </div>
     </header>
@@ -25,5 +35,10 @@
     <section class="about"></section>
 
     <script src="app.js"></script>
+    <script>
+      $(function () {
+        $("#world-map").vectorMap({ map: "world_mill" });
+      });
+    </script>
   </body>
 </html>
