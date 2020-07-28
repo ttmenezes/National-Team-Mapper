@@ -54,7 +54,7 @@ section {
 } */
 
 #map-container {
-  min-width: 65vw;
+  /* min-width: 65vw; */
 }
 
 #map {

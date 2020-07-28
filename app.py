@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import os
@@ -88,6 +88,19 @@ players_schema = PlayerSchema(many=True)
 
 #     return product_schema.jsonify(new_product)
 
+# Landing page
+@app.route('/')
+def home():
+    # all_teams = Team.query.all()
+    # result = teams_schema.dump(all_teams)
+    all_teams = Team.query.all()
+    result = teams_schema.dump(all_teams)
+
+    # print(all_teams)
+    # print(result)
+
+    return render_template('index.html', team_data=result)
+
 
 # Get All teams
 @app.route('/teams', methods=['GET'])
@@ -136,4 +149,4 @@ def get_product(teamID):
 
 # Run Server
 if __name__ == '__main__':
-    app.run(debug=True, port=6000)
+    app.run(debug=True)

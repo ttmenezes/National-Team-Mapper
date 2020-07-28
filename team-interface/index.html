@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>National Team Map</title>
     <link rel="stylesheet" href="./styles.css" />
-    // map links
     <link
       rel="stylesheet"
       href="../map/jquery-jvectormap-2.0.1.css"
@@ -24,17 +23,22 @@
             <h2>
               Select a national team
             </h2>
+            <select name="select-team" id="team-selector"></select>
           </div>
         </div>
         <div id="map-container" class="card">
-          <div id="world-map" style="width: 720px; height: 400px;"></div>
+          <!-- <div id="world-map" style="width: 1200px; height: 850px;"></div> -->
+          <div id="world-map" style="width: 65vw; height: 80vh;"></div>
         </div>
       </div>
     </header>
 
     <section class="about"></section>
 
-    <script src="app.js"></script>
+    <!-- for testing -->
+    <script type="module" src="./test-data/teamData.js"></script>
+
+    <script type="module" src="app.js"></script>
     <script>
       $(function () {
         $("#world-map").vectorMap({ map: "world_mill" });
