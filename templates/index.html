@@ -23,11 +23,24 @@
             <h2>
               Select a national team
             </h2>
-            <select name="select-team" id="team-selector">
-              {% for team in team_data %}
-              <option value="{{team.id}}">{{team.name}}</option>
-              {% endfor %}
-            </select>
+          </div>
+          <div>
+            <form id="team-query-form">
+              <select autofocus id="team-selector">
+                {% for team in team_data %} {% if team_id and team.id ==
+                team_id%}
+                <option selected="selected" value="{{team.id}}"
+                  >{{team.name}}</option
+                >
+                {% else %}
+                <option value="{{team.id}}">{{team.name}}</option>
+                {% endif %} {% endfor %}
+              </select>
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+          <div id="list-container">
+            <ul id="player-list"></ul>
           </div>
         </div>
         <div id="map-container" class="card">
@@ -39,14 +52,57 @@
 
     <section class="about"></section>
 
-    <!-- for testing -->
-    <script type="module" src="../static/test-data/teamData.js"></script>
+    <script src="../static/app.js"></script>
 
-    <script type="module" src="../static/app.js"></script>
-    <script>
-      $(function () {
-        $("#world-map").vectorMap({ map: "world_mill" });
+    {% if roster_data %}
+    <script type="text/javascript">
+      const roster = JSON.parse('{{ roster_data | tojson | safe}}');
+      const team_id = JSON.parse('{{ team_id | tojson | safe}}');
+
+      const values = {};
+      const playerOriginCount = {};
+
+      roster.forEach((player) => {
+        addPlayerToList(player);
+        const pbcountry = player.birth_country;
+        values[pbcountry] = '2';
+        if (!playerOriginCount[pbcountry]) playerOriginCount[pbcountry] = 1;
+        else playerOriginCount[pbcountry]++;
+      });
+
+      values[team_id] = '1';
+
+      $('#world-map').vectorMap({
+        map: 'world_mill',
+        scaleColors: ['#C8EEFF', '#0071A4'],
+        normalizeFunction: 'polynomial',
+        hoverOpacity: 0.7,
+        hoverColor: false,
+        series: {
+          regions: [
+            {
+              scale: {
+                '1': '#A3E4D7',
+                '2': '#02A0DA',
+              },
+              attribute: 'fill',
+              values: values,
+            },
+          ],
+        },
+        onRegionTipShow: function (e, el, code) {
+          if (playerOriginCount[code])
+            el.html(el.html() + ' (players: ' + playerOriginCount[code] + ')');
+          else el.html(el.html() + ' (players: ' + 0 + ')');
+        },
       });
     </script>
+    {% else %}
+    <script>
+      $(function () {
+        $('#world-map').vectorMap({ map: 'world_mill' });
+      });
+    </script>
+    {% endif %}
   </body>
 </html>

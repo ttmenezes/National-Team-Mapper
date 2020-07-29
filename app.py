@@ -95,11 +95,32 @@ def home():
     # result = teams_schema.dump(all_teams)
     all_teams = Team.query.all()
     result = teams_schema.dump(all_teams)
-
-    # print(all_teams)
-    # print(result)
-
     return render_template('index.html', team_data=result)
+
+
+# Team info
+@app.route('/<teamID>')
+def get_team(teamID):
+    all_teams = Team.query.all()
+    result = teams_schema.dump(all_teams)
+
+    roster = db.session.query(Player).filter(Player.team_id == teamID).all()
+
+    # print(players_schema.dump(roster))
+
+    rosterList = []
+
+    for player in roster:
+        rosterList.append({
+            'name': player.name.replace('\n', ''),
+            'wiki': player.player_wiki_url,
+            'birthplace': player.birthplace,
+            'birth_country': player.birth_country
+        })
+
+    print(len(rosterList))
+
+    return render_template('index.html', team_data=result, roster_data=rosterList, team_id=teamID)
 
 
 # Get All teams
