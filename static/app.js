@@ -3,13 +3,6 @@ const worldMap = document.getElementById('world-map');
 const teamForm = document.getElementById('team-query-form');
 const playerList = document.getElementById('player-list');
 
-// teamData.forEach((data) => {
-//   const newEl = document.createElement("option");
-//   newEl.setAttribute("value", data.id);
-//   newEl.textContent = data.name;
-//   teamSelector.appendChild(newEl);
-// });
-
 // handle selector selection
 teamSelector.addEventListener('change', (e) => {
   console.log(e.target.value);
@@ -18,10 +11,13 @@ teamSelector.addEventListener('change', (e) => {
 
 function addPlayerToList(playerData) {
   const playerEl = document.createElement('li');
+  playerEl.className = 'player-item-text';
   const playerWiki = document.createElement('a');
+  playerWiki.className = 'player-name-text';
   playerWiki.href = playerData.wiki;
   playerWiki.textContent = playerData.name;
   const birthplaceEl = document.createElement('li');
+  birthplaceEl.className = 'birthplace-item-text';
   birthplaceEl.textContent = `${playerData.birthplace}`;
   playerEl.appendChild(playerWiki);
   playerEl.appendChild(birthplaceEl);
@@ -29,50 +25,20 @@ function addPlayerToList(playerData) {
   playerList.appendChild(playerEl);
 }
 
-// const values = {};
-// values[selectedTeam] = "2";
+function unitedKingdomEdgeCase(countryCode) {
+  return (
+    countryCode === 'EN' ||
+    countryCode === 'WL' ||
+    countryCode === 'SQ' ||
+    countryCode === 'ND'
+  );
+}
 
-// $("#world-map").vectorMap({
-//   map: "world_mill",
-//   scaleColors: ["#C8EEFF", "#0071A4"],
-//   normalizeFunction: "polynomial",
-//   hoverOpacity: 0.7,
-//   hoverColor: false,
-//   series: {
-//     regions: [
-//       {
-//         scale: {
-//           "1": "#A3E4D7",
-//           "2": "#02A0DA",
-//         },
-//         attribute: "fill",
-//         values: values,
-//       },
-//     ],
-//   },
-// });
-
-// $(function () {
-//   $("#world-map").vectorMap({
-//     map: "world_mill",
-//     scaleColors: ["#C8EEFF", "#0071A4"],
-//     normalizeFunction: "polynomial",
-//     hoverOpacity: 0.7,
-//     hoverColor: false,
-//     series: {
-//       regions: [
-//         {
-//           scale: {
-//             "1": "#A3E4D7",
-//             "2": "#02A0DA",
-//           },
-//           attribute: "fill",
-//           values: {
-//             BR: "1",
-//             RU: "2",
-//           },
-//         },
-//       ],
-//     },
-//   });
-// });
+window.addEventListener('resize', () => {
+  console.log(
+    'width: ' +
+      document.documentElement.clientWidth +
+      '   height: ' +
+      document.documentElement.clientHeight
+  );
+});

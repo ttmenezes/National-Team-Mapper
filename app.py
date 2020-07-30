@@ -73,26 +73,9 @@ player_schema = PlayerSchema()
 players_schema = PlayerSchema(many=True)
 
 
-# Create a Product
-# @app.route('/product', methods=['POST'])
-# def add_product():
-#     name = request.json['name']
-#     description = request.json['description']
-#     price = request.json['price']
-#     qty = request.json['qty']
-
-#     new_product = Team(name, description, price, qty)
-
-#     db.session.add(new_product)
-#     db.session.commit()
-
-#     return product_schema.jsonify(new_product)
-
 # Landing page
 @app.route('/')
 def home():
-    # all_teams = Team.query.all()
-    # result = teams_schema.dump(all_teams)
     all_teams = Team.query.all()
     result = teams_schema.dump(all_teams)
     return render_template('index.html', team_data=result)
@@ -106,8 +89,6 @@ def get_team(teamID):
 
     roster = db.session.query(Player).filter(Player.team_id == teamID).all()
 
-    # print(players_schema.dump(roster))
-
     rosterList = []
 
     for player in roster:
@@ -117,8 +98,6 @@ def get_team(teamID):
             'birthplace': player.birthplace,
             'birth_country': player.birth_country
         })
-
-    print(len(rosterList))
 
     return render_template('index.html', team_data=result, roster_data=rosterList, team_id=teamID)
 
@@ -137,6 +116,25 @@ def get_product(teamID):
     roster = db.session.query(Player).filter(Player.team_id == teamID).all()
     return players_schema.jsonify(roster)
 
+
+# Run Server
+if __name__ == '__main__':
+    app.run(debug=True)
+
+# Create a Product
+# @app.route('/product', methods=['POST'])
+# def add_product():
+#     name = request.json['name']
+#     description = request.json['description']
+#     price = request.json['price']
+#     qty = request.json['qty']
+
+#     new_product = Team(name, description, price, qty)
+
+#     db.session.add(new_product)
+#     db.session.commit()
+
+#     return product_schema.jsonify(new_product)
 
 # Update a product
 # @app.route('/product/<id>', methods=['PUT'])
@@ -166,8 +164,3 @@ def get_product(teamID):
 #     db.session.commit()
 
 #     return product_schema.jsonify(product)
-
-
-# Run Server
-if __name__ == '__main__':
-    app.run(debug=True)

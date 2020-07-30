@@ -28,7 +28,7 @@
               Select a national team
             </h2>
           </div>
-          <div>
+          <div id="query-container">
             <form id="team-query-form">
               <select autofocus id="team-selector">
                 {% for team in team_data %} {% if team_id and team.id ==
@@ -40,8 +40,17 @@
                 <option value="{{team.id}}">{{team.name}}</option>
                 {% endif %} {% endfor %}
               </select>
-              <input type="submit" value="Submit" />
+              <input id="submit-button" type="submit" value="GO" />
             </form>
+          </div>
+          <div class="selected-team">
+            {% for team in team_data %} {% if team_id and team.id == team_id%}
+            <h2>
+              <a class="team-url" href="{{team.team_wiki_url}}">
+                {{team.name}}
+              </a>
+            </h2>
+            {% endif %} {% endfor %}
           </div>
           <div id="list-container">
             <ul id="player-list"></ul>
@@ -49,7 +58,7 @@
         </div>
         <div id="map-container" class="card">
           <!-- <div id="world-map" style="width: 1200px; height: 850px;"></div> -->
-          <div id="world-map" style="width: 65vw; height: 80vh;"></div>
+          <div id="world-map" style="width: 65vw; height: 85vh;"></div>
         </div>
       </div>
     </header>
@@ -58,7 +67,7 @@
 
     <script src="../static/app.js"></script>
 
-    {% if roster_data %}
+    {% if team_id %}
     <script type="text/javascript">
       const roster = JSON.parse('{{ roster_data | tojson | safe}}');
       const team_id = JSON.parse('{{ team_id | tojson | safe}}');
@@ -68,13 +77,23 @@
 
       roster.forEach((player) => {
         addPlayerToList(player);
-        const pbcountry = player.birth_country;
+        let pbcountry = player.birth_country;
+
+        console.log('1 ' + pbcountry + '  ' + unitedKingdomEdgeCase(pbcountry));
+
+        if (unitedKingdomEdgeCase(pbcountry)) pbcountry = 'GB';
+
         values[pbcountry] = '2';
+
         if (!playerOriginCount[pbcountry]) playerOriginCount[pbcountry] = 1;
         else playerOriginCount[pbcountry]++;
       });
 
-      values[team_id] = '1';
+      console.log(values);
+      console.log('2 ' + unitedKingdomEdgeCase(team_id));
+
+      if (unitedKingdomEdgeCase(team_id)) values['GB'] = '1';
+      else values[team_id] = '1';
 
       $('#world-map').vectorMap({
         map: 'world_mill',
