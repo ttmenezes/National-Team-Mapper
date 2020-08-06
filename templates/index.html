@@ -1,131 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>National Team Map</title>
-    <link rel="stylesheet" href="../static/styles.css" />
-    <link
-      rel="stylesheet"
-      href="../static/map/jquery-jvectormap-2.0.5.css"
-      type="text/css"
-      media="screen"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Montserrat"
-    />
-    <script src="../static/map/jquery-3.5.1.js"></script>
-    <script src="../static/map/jquery-jvectormap-2.0.5.min.js"></script>
-    <script src="../static/map/jquery-jvectormap-world-mill.js"></script>
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <div id="query-bar" class="card">
-          <div class="subtitle">
-            <h2>
-              Select a national team
-            </h2>
-          </div>
-          <div id="query-container">
-            <form id="team-query-form">
-              <select autofocus id="team-selector">
-                {% for team in team_data %} {% if team_id and team.id ==
-                team_id%}
-                <option selected="selected" value="{{team.id}}"
-                  >{{team.name}}</option
-                >
-                {% else %}
-                <option value="{{team.id}}">{{team.name}}</option>
-                {% endif %} {% endfor %}
-              </select>
-              <input id="submit-button" type="submit" value="GO" />
-            </form>
-          </div>
-          <div class="selected-team">
-            {% for team in team_data %} {% if team_id and team.id == team_id%}
-            <h2>
-              <a class="team-url" href="{{team.team_wiki_url}}">
-                {{team.name}}
-              </a>
-            </h2>
-            {% endif %} {% endfor %}
-          </div>
-          <div id="list-container">
-            <ul id="player-list"></ul>
-          </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>National Team Map</title>
+  <link rel="icon" href="https://img.icons8.com/windows/32/000000/globe.png" />
+  <link rel="stylesheet" href="../static/styles.css" />
+  <link rel="stylesheet" href="../static/map/jquery-jvectormap-2.0.5.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
+  <script src="../static/map/jquery-3.5.1.js"></script>
+  <script src="../static/map/jquery-jvectormap-2.0.5.min.js"></script>
+  <script src="../static/map/jquery-jvectormap-world-mill.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div id="query-bar" class="card">
+        <div class="subtitle">
+          <h2>
+            Select a national team
+          </h2>
         </div>
-        <div id="map-container" class="card">
-          <!-- <div id="world-map" style="width: 1200px; height: 850px;"></div> -->
-          <div id="world-map" style="width: 65vw; height: 85vh;"></div>
+        <div id="query-container">
+          <form id="team-query-form">
+            <select autofocus id="team-selector">
+              {% for team in team_data %} {% if team_id and team.id ==
+                team_id%}
+              <option selected="selected" value="{{team.id}}">{{team.name}}</option>
+              {% else %}
+              <option value="{{team.id}}">{{team.name}}</option>
+              {% endif %} {% endfor %}
+            </select>
+            <input id="submit-button" type="submit" value="GO" />
+          </form>
+        </div>
+        <div class="selected-team">
+          {% for team in team_data %} {% if team_id and team.id == team_id%}
+          <h2>
+            <a class="team-url" href="{{team.team_wiki_url}}">
+              {{team.name}}
+            </a>
+          </h2>
+          {% endif %} {% endfor %}
+        </div>
+        <div id="list-container">
+          <ul id="player-list"></ul>
         </div>
       </div>
-    </header>
+      <div id="map-container" class="card">
+        <div id="world-map" style="width: 65vw; height: 80vh;"></div>
+        <h3>Map of the birthplaces of the players on the given national team</h3>
+        <div id="legend">
+          <div class="legend-section">
+            <div class="color-box" style="background-color: #7bd4be; margin-right: 10px;"></div>
+            <p>National Team</p>
+          </div>
+          <div class="legend-section">
+            <div class="color-box" style="background-color: #0071A4; margin-right: 10px;"></div>
+            <p>Birthplaces of players</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <section class="about"></section>
+  <section id="about">
+    <div class="text-section">
+      <h1>About</h1>
+      <p>
+        This project was inspired by the presentation of
+        <a href="https://romancestudies.duke.edu/people/profile/laurent-dubois">Laurent Dubois</a> at
+        the 2019 Princeton Soccer Conference. His talk outlined how France's
+        imperial history is reflected in their national team through players hailing
+        from current and former colonies. He elaborated upon how many of these players are
+        to thank for much of the recent success of <i>Les Bleus</i>.
+      </p>
+      <p>
+        I was intrigued by the talk, and I wanted to see how other countries
+        have leveraged their imperial histories to recruit top footballing talent...and
+        I knew the process could be automated.
+      </p>
+      <p>
+        Thus, I set out to make a Python program which scrapes the roster data for each national team
+        off of Wikipedia. The program would then scrape and record the birthplaces of the players on a given
+        team, and this data would then be represented visually on a map.
+      </p>
+      <p>
+        The project yielded some interesting findings that go beyond showing how imperial states pull players from
+        current and former colonies. Other findings include:
+      <ul>
+        <li>
+          The recruitment of players by imperial states from current and former colonies is counteracted
+          by players born the imperial state who play for the colonies' national teams
+          <ul>
+            <li>
+              E.g. half of Algeria's national team was born in France. Many often point to players such as Zinedine
+              Zidane
+              as examples world-class Algerian-born players who played for France, but Riyad Mahrez is a French-born
+              player
+              who plays for Algeria
+            </li>
+          </ul>
+        </li>
+        <li>
+          The high number of Turkish national team players born in Germany reflects German policies of
+          <a
+            href="https://en.wikipedia.org/wiki/Turks_in_Germany#:~:text=This%20was%20partly%20due%20to,profile%20than%20the%20German%20population.">
+            labor recruitment and, later, family reunification
+          </a>
+        </li>
+        <li>
+          Teams from countries with a relatively less-developed football infrastructure but a wide diaspora will
+          leverage heritage players
+          born in other countries
+        <li>
+          E.g. Philippines, Thailand, Pakistan
+        </li>
+        </li>
+      </ul>
+      </p>
+      <h1>Shortcomings</h1>
+      <p>
+        Wikipedia lacked:
+      <ul>
+        <li>complete rosters for every national team</li>
+        <li>birthplace information for every player</li>
+      </ul>
 
-    <script src="../static/app.js"></script>
 
-    {% if team_id %}
-    <script type="text/javascript">
-      const roster = JSON.parse('{{ roster_data | tojson | safe}}');
-      const team_id = JSON.parse('{{ team_id | tojson | safe}}');
+      These pieces of information were simply ommitted in the scraping, so they are not reflected in the
+      queries above.
+      - The data only looks at the birthplaces of the players, not necessarily their heritage
+      </p>
+    </div>
+  </section>
 
-      const values = {};
-      const playerOriginCount = {};
+  <script src="../static/app.js"></script>
 
-      roster.forEach((player) => {
-        addPlayerToList(player);
-        let pbcountry = player.birth_country;
+  {% if team_id %}
+  <script type="text/javascript">
+    const roster = JSON.parse('{{ roster_data | tojson | safe}}');
+    const team_id = JSON.parse('{{ team_id | tojson | safe}}');
 
-        console.log('1 ' + pbcountry + '  ' + unitedKingdomEdgeCase(pbcountry));
+    const values = {};
+    const playerOriginCount = {};
 
-        if (unitedKingdomEdgeCase(pbcountry)) pbcountry = 'GB';
+    roster.forEach((player) => {
+      addPlayerToList(player);
+      let pbcountry = player.birth_country;
 
-        values[pbcountry] = '2';
+      console.log('1 ' + pbcountry + '  ' + unitedKingdomEdgeCase(pbcountry));
 
-        if (!playerOriginCount[pbcountry]) playerOriginCount[pbcountry] = 1;
-        else playerOriginCount[pbcountry]++;
-      });
+      if (unitedKingdomEdgeCase(pbcountry)) pbcountry = 'GB';
 
-      console.log(values);
-      console.log('2 ' + unitedKingdomEdgeCase(team_id));
+      values[pbcountry] = '2';
 
-      if (unitedKingdomEdgeCase(team_id)) values['GB'] = '1';
-      else values[team_id] = '1';
+      if (!playerOriginCount[pbcountry]) playerOriginCount[pbcountry] = 1;
+      else playerOriginCount[pbcountry]++;
+    });
 
-      $('#world-map').vectorMap({
-        map: 'world_mill',
-        scaleColors: ['#C8EEFF', '#0071A4'],
-        normalizeFunction: 'polynomial',
-        hoverOpacity: 0.7,
-        hoverColor: false,
-        series: {
-          regions: [
-            {
-              scale: {
-                '1': '#A3E4D7',
-                '2': '#02A0DA',
-              },
-              attribute: 'fill',
-              values: values,
+    console.log(values);
+    console.log('2 ' + unitedKingdomEdgeCase(team_id));
+
+    if (unitedKingdomEdgeCase(team_id)) values['GB'] = '1';
+    else values[team_id] = '1';
+
+    $('#world-map').vectorMap({
+      map: 'world_mill',
+      scaleColors: ['#C8EEFF', '#0071A4'],
+      normalizeFunction: 'polynomial',
+      hoverOpacity: 0.7,
+      hoverColor: false,
+      series: {
+        regions: [
+          {
+            scale: {
+              '1': '#A3E4D7',
+              '2': '#02A0DA',
             },
-          ],
-        },
-        onRegionTipShow: function (e, el, code) {
-          if (playerOriginCount[code])
-            el.html(el.html() + ' (players: ' + playerOriginCount[code] + ')');
-          else el.html(el.html() + ' (players: ' + 0 + ')');
-        },
-      });
-    </script>
-    {% else %}
-    <script>
-      $(function () {
-        $('#world-map').vectorMap({ map: 'world_mill' });
-      });
-    </script>
-    {% endif %}
-  </body>
+            attribute: 'fill',
+            values: values,
+          },
+        ],
+      },
+      onRegionTipShow: function (e, el, code) {
+        if (playerOriginCount[code])
+          el.html(el.html() + ' (players: ' + playerOriginCount[code] + ')');
+        else el.html(el.html() + ' (players: ' + 0 + ')');
+      },
+    });
+  </script>
+  {% else %}
+  <script>
+    $(function () {
+      $('#world-map').vectorMap({ map: 'world_mill' });
+    });
+  </script>
+  {% endif %}
+</body>
+
 </html>
