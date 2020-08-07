@@ -17,19 +17,25 @@ body {
 
 p {
   margin-top: 15px;
+  font-size: 24px;
+}
+
+h1 {
+  font-family: 'Cairo';
+  font-size: 50px;
 }
 
 header {
   display: flex;
   height: 100vh;
-  width: 100vw;
+  /* width: 100vw; */
   background: linear-gradient(240deg, #8562e6, #7bd4be);
   flex-direction: row;
   justify-content: center;
 }
 
 section {
-  height: 100vh;
+  /* height: 100vh; */
   color: #4e7e6f;
 }
 
@@ -82,6 +88,11 @@ section {
   max-height: 85vh; */
 }
 
+.logo-a {
+  display: flex;
+  justify-content: center;
+}
+
 .player-item-text {
   list-style-type: none;
   margin-top: 15px;
@@ -103,6 +114,11 @@ section {
   padding-left: 25px;
 }
 
+.squad-container {
+  display: flex;
+  justify-content: center;
+}
+
 .team-url {
   text-decoration: none;
   color: #4e7e6f;
@@ -113,10 +129,40 @@ section {
   background-color: #9bb3abc2;
 }
 
+.credit-url:hover {
+  background-color: #9bb3abc2;
+}
+
 #about {
   display: flex;
   justify-content: center;
   padding-top: 5%;
+  padding-bottom: 5%;
+  background: linear-gradient(0deg,#d8ece6,#ffffff);
+}
+
+#about li {
+  font-size: 18px;
+}
+
+#bs-logo{
+  width: 90%;
+}
+
+#credit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 30vh;
+  padding: 3%;
+}
+
+#credit * {
+  text-decoration: none;
+}
+
+#france-squad {
+  width: 85%;
 }
 
 #legend {
@@ -147,8 +193,17 @@ section {
   overflow: scroll;
 }
 
+#logos-container {
+  display: flex;
+  align-items: center;
+}
+
 #player-list {
   height: 100%;
+}
+
+#py-logo {
+  width: 40%;
 }
 
 #team-selector {
@@ -174,4 +229,8 @@ section {
 
 #submit-button:hover {
   background-color: #77e0ca;
+}
+
+#zizou {
+  width: 35%;
 }

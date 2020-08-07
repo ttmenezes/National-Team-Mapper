@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../static/styles.css" />
   <link rel="stylesheet" href="../static/map/jquery-jvectormap-2.0.5.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo" />
   <script src="../static/map/jquery-3.5.1.js"></script>
   <script src="../static/map/jquery-jvectormap-2.0.5.min.js"></script>
   <script src="../static/map/jquery-jvectormap-world-mill.js"></script>
@@ -48,6 +49,7 @@
         <div id="list-container">
           <ul id="player-list"></ul>
         </div>
+        Data retrieved July 22, 2020
       </div>
       <div id="map-container" class="card">
         <div id="world-map" style="width: 65vw; height: 80vh;"></div>
@@ -70,23 +72,36 @@
     <div class="text-section">
       <h1>About</h1>
       <p>
-        This project was inspired by the presentation of
+        This project was inspired by the presentation from
         <a href="https://romancestudies.duke.edu/people/profile/laurent-dubois">Laurent Dubois</a> at
         the 2019 Princeton Soccer Conference. His talk outlined how France's
         imperial history is reflected in their national team through players hailing
-        from current and former colonies. He elaborated upon how many of these players are
-        to thank for much of the recent success of <i>Les Bleus</i>.
+        from current and former colonies. He emphasized the role of these players in
+        the recent triumphs of <i>Les Bleus</i>.
       </p>
+      <div class="squad-container">
+        <img id="france-squad" src=" ../static/assets/france-squad.png" alt="France Squad">
+      </div>
       <p>
         I was intrigued by the talk, and I wanted to see how other countries
         have leveraged their imperial histories to recruit top footballing talent...and
         I knew the process could be automated.
       </p>
       <p>
-        Thus, I set out to make a Python program which scrapes the roster data for each national team
-        off of Wikipedia. The program would then scrape and record the birthplaces of the players on a given
-        team, and this data would then be represented visually on a map.
+        Thus, I created a Python program to scrape (using
+        <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a>)
+        the roster data for each national team
+        off of Wikipedia. The program then scrapes and records the birthplaces of the players on a given
+        team, and this data is represented visually on the <a href="https://jvectormap.com/">map</a> above.
       </p>
+      <div id="logos-container">
+        <a class="logo-a" href="https://www.python.org/">
+          <img id="py-logo" src="../static/assets/python.png" alt="Python">
+        </a>
+        <a class="logo-a" href=" https://funthon.wordpress.com/2017/05/21/beautiful-soup-4/">
+          <img id="bs-logo" src="../static/assets/beautiful-soup.png" alt="Beautiful Soup">
+        </a>
+      </div>
       <p>
         The project yielded some interesting findings that go beyond showing how imperial states pull players from
         current and former colonies. Other findings include:
@@ -96,11 +111,9 @@
           by players born the imperial state who play for the colonies' national teams
           <ul>
             <li>
-              E.g. half of Algeria's national team was born in France. Many often point to players such as Zinedine
-              Zidane
-              as examples world-class Algerian-born players who played for France, but Riyad Mahrez is a French-born
-              player
-              who plays for Algeria
+              E.g. Many often point to players such as Zinedine Zidane
+              as an example of a world-class Algerian-born player who played for France, but Riyad Mahrez is a
+              French-born player who plays for Algeria—and half of Algeria's national team was born in France
             </li>
           </ul>
         </li>
@@ -112,29 +125,78 @@
           </a>
         </li>
         <li>
-          Teams from countries with a relatively less-developed football infrastructure but a wide diaspora will
-          leverage heritage players
-          born in other countries
-        <li>
-          E.g. Philippines, Thailand, Pakistan
-        </li>
+          Teams from countries with a relatively less-developed football infrastructure but a wide diaspora have
+          recruited heritage players born in other countries
+          <ul>
+            <li>
+              E.g. Philippines, Thailand, Pakistan
+            </li>
+          </ul>
         </li>
       </ul>
       </p>
+
+      <div class="squad-container">
+        <img id="zizou" src=" ../static/assets/zizou-flag-opaque.png" alt="Zizou">
+      </div>
+
       <h1>Shortcomings</h1>
-      <p>
-        Wikipedia lacked:
       <ul>
-        <li>complete rosters for every national team</li>
-        <li>birthplace information for every player</li>
+        <li>
+          <p>
+            Wikipedia lacks:
+          <ul>
+            <li>complete rosters for every national team</li>
+            <li>birthplace information for every player</li>
+          </ul>
+          </p>
+          <p>
+            These pieces of information were simply ommitted in the scraping, so they are not reflected in the
+            queries above
+          </p>
+        </li>
+        <li>
+          <p>
+            The data only looks at the birthplaces of the players, not necessarily their heritage
+          </p>
+        </li>
       </ul>
 
-
-      These pieces of information were simply ommitted in the scraping, so they are not reflected in the
-      queries above.
-      - The data only looks at the birthplaces of the players, not necessarily their heritage
-      </p>
     </div>
+  </section>
+
+  <section id="credit">
+    <div>
+      <h2>Credit</h2>
+      <a class="credit-url"
+        href="https://www.quora.com/What-would-France-national-football-team-do-without-African-origin-players">
+        France vector art (traced from image)
+      </a>
+      <br>
+      <a class="credit-url" href="https://qph.fs.quoracdn.net/main-qimg-20c935639fcd9792f35712debf86726f.webp">
+        Zinedine Zidane vector art (traced from image)
+      </a>
+      <br>
+      <a class="credit-url" href="https://funthon.wordpress.com/2017/05/21/beautiful-soup-4/">
+        Beautiful Soup logo
+      </a>
+      <br>
+      <a class="credit-url"
+        href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/900px-Flag_of_Algeria.svg.png">
+        Algerian flag
+      </a>
+      <br>
+      <a class="credit-url" href="https://jvectormap.com/">
+        JavaScript map library (jVector Map)
+      </a>
+    </div>
+    <div>
+      <a href="https://github.com/ttmenezes/National-Team-Mapper">
+        <h2 class="credit-url">Code</h2>
+        <img class="credit-url" src="https://img.icons8.com/fluent/48/000000/github.png" />
+      </a>
+    </div>
+
   </section>
 
   <script src="../static/app.js"></script>
