@@ -4,18 +4,27 @@ User can select a country with a national or official football team, and then th
 # To Do
 - [x] Complete About section
 - [x] Add images and make About section aesthetically pleasing
-- [] Make sure selected countries show up on map (in light blue)
-- [] Add in info about date the data was scraped
-- [] Make the site mobile-responsive
-- [] Clean up files and file structure
-- [] Deploy the app to a hosting service (Likely linode)
+* Make sure selected countries show up on map (in light blue)
+* Add in info about date the data was scraped
+* Make the site mobile-responsive
+* Clean up files and file structure
+* Deploy the app to a hosting service (Likely linode)
 
-```javascript
-function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
-}
+```python
+with open('teams.csv', newline='') as f:
+
+    db = app.db
+
+    reader = csv.reader(f)
+    for row in reader:
+        id = row[0]
+        name = row[1]
+        team_wiki_url = row[2]
+
+        new_team = app.Team(id, name, team_wiki_url)
+
+        db.session.add(new_team)
+        db.session.commit()
 ```
 
 # Sources
