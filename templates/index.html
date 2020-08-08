@@ -18,7 +18,7 @@
 <body>
   <header>
     <div class="container">
-      <div id="query-bar" class="card">
+      <div id="query" class="card">
         <div class="subtitle">
           <h2>
             Select a national team
@@ -52,16 +52,16 @@
         Data retrieved July 22, 2020
       </div>
       <div id="map-container" class="card">
-        <div id="world-map" style="width: 65vw; height: 80vh;"></div>
+        <div id="world-map" style="width: 65vw; height: 80vmin;"></div>
         <h3>Map of the birthplaces of the players on the given national team</h3>
         <div id="legend">
           <div class="legend-section">
             <div class="color-box" style="background-color: #7bd4be; margin-right: 10px;"></div>
-            <p>National Team</p>
+            National Team
           </div>
           <div class="legend-section">
             <div class="color-box" style="background-color: #0071A4; margin-right: 10px;"></div>
-            <p>Birthplaces of players</p>
+            Birthplaces of players
           </div>
         </div>
       </div>
@@ -111,9 +111,15 @@
           by players born the imperial state who play for the colonies' national teams
           <ul>
             <li>
-              E.g. Many often point to players such as Zinedine Zidane
+              Many often point to players such as Zinedine Zidane
               as an example of a world-class Algerian-born player who played for France, but Riyad Mahrez is a
               French-born player who plays for Algeria—and half of Algeria's national team was born in France
+            </li>
+            <li>
+              The vast majority of players on Comoros' national team were born in France
+            </li>
+            <li>
+              More players on the Suriname national team were born in the Netherlands than Suriname
             </li>
           </ul>
         </li>
@@ -203,6 +209,7 @@
 
   {% if team_id %}
   <script type="text/javascript">
+    // console.log('{{ roster_data | tojson | safe}}');
     const roster = JSON.parse('{{ roster_data | tojson | safe}}');
     const team_id = JSON.parse('{{ team_id | tojson | safe}}');
 

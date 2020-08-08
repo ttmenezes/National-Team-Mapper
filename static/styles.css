@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-/* h2 {
-  font-size: 2vw;
-} */
-
 body {
   display: flex;
   font-family: 'Montserrat';
@@ -17,11 +13,13 @@ body {
 
 p {
   margin-top: 15px;
+  /* font-size: 24px; */
   font-size: 24px;
 }
 
 h1 {
   font-family: 'Cairo';
+  /* font-size: 50px; */
   font-size: 50px;
 }
 
@@ -168,6 +166,7 @@ section {
 #legend {
   display: flex;
   flex-direction: row;
+  width: 100%;
   justify-content: space-evenly;
 }
 
@@ -175,12 +174,15 @@ section {
   width: 100%;
 }
 
-#map-container * {
-  margin-bottom: 10px;
+#map-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #query-container {
-  display: flexbox;
+  display: flex;
   flex-wrap: nowrap;
   justify-content: space-evenly;
   font-family: 'Montserrat';
@@ -189,7 +191,7 @@ section {
 
 #list-container {
   font-family: 'Montserrat';
-  height: 75vh;
+  height: 100%;
   overflow: scroll;
 }
 
@@ -219,6 +221,7 @@ section {
 }
 
 #submit-button {
+  min-width: 45px;
   width: 20%;
   background-color: #7bd4be;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -231,6 +234,27 @@ section {
   background-color: #77e0ca;
 }
 
+#query {
+  display: flex;
+  flex-direction: column;
+}
+
 #zizou {
   width: 35%;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .container {
+    flex-direction: column;
+  }
+  header {
+    height: auto;
+  }
+  .text-section {
+    width: 90%;
+  }
+  #list-container {
+    overflow: visible;
+  }
 }

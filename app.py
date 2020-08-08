@@ -93,11 +93,19 @@ def get_team(teamID):
 
     for player in roster:
         rosterList.append({
-            'name': player.name.replace('\n', ''),
+            'name': player.name.translate({
+                ord('\n'): None,
+                ord('"'): None
+            }),
             'wiki': player.player_wiki_url,
-            'birthplace': player.birthplace,
+            'birthplace': player.birthplace.translate({
+                ord('\n'): None,
+                ord('"'): None
+            }),
             'birth_country': player.birth_country
         })
+
+    print(rosterList)
 
     return render_template('index.html', team_data=result, roster_data=rosterList, team_id=teamID)
 
