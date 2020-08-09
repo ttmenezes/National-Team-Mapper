@@ -28,19 +28,18 @@ def getBirthplace(wikiURL):
 def addSquad(team_id, teamWikiURL, writer):
     wikiData = requests.get(teamWikiURL)
     wikiSoup = BeautifulSoup(wikiData.text, 'html.parser')
-    squadRoster = wikiSoup.find(id='Current_squad')
 
-    if (squadRoster == None):
-        return
+    # If you want to access just the current roster, then use this section of code
+    # squadRoster = wikiSoup.find(id='Current_squad')
+    # nextEls = squadRoster.next_elements
+    # for el in nextEls:
+    #     if el.name == 'table':
+    #         roster = el
+    #         break
+    # playerList = roster.find_all("tr", class_="nat-fs-player")
 
-    nextEls = squadRoster.next_elements
-
-    for el in nextEls:
-        if el.name == 'table':
-            roster = el
-            break
-
-    playerList = roster.find_all("tr", class_="nat-fs-player")
+    # otherwise, if you want to also include recent call-ups, then use this line
+    playerList = wikiSoup.find_all("tr", class_="nat-fs-player")
 
     for playerRow in playerList:
         player = playerRow.find(attrs={"scope": "row"})
@@ -56,19 +55,16 @@ def addSquad(team_id, teamWikiURL, writer):
             else:
                 birth_country_id = '##'
 
-            # print(player.get_text() + ' -- ' + birth_country_id)
-
-             # (self, id, name, player_wiki_url, team_id, birthplace, birth_country)
+             # input for object: (self, id, name, player_wiki_url, team_id, birthplace, birth_country)
             writer.writerow([player.get_text(), player.a['href'], team_id,
                              birthplace, birth_country_id])
 
         except:
             pass
-            # print(f'birthplace not found for {player.get_text()}')
 
 
 # open file, iterate over teams, call method to put each player into the file
-with open('brazil.csv', 'w', newline='') as f1, open('teams.csv', newline='') as f2:
+with open('players.csv', 'w', newline='') as f1, open('teams.csv', newline='') as f2:
     writer = csv.writer(f1)
     reader = csv.reader(f2)
 

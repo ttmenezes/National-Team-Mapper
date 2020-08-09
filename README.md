@@ -8,6 +8,7 @@ User can select a country with a national or official football team, and then th
 * Add in info about date the data was scraped - FIX margin around this
 - [x] Make the site mobile-responsive
 * Clean up files and file structure
+* Find out how to set up analytics (or just how to check them)
 * Deploy the app to a hosting service (Likely linode)
 
 ```python
