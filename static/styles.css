@@ -23,6 +23,10 @@ h1 {
   font-size: 50px;
 }
 
+h6 {
+  margin-top: 10px;
+}
+
 header {
   display: flex;
   height: 100vh;
@@ -182,11 +186,12 @@ section {
 }
 
 #query-container {
+  padding: 15px 0px;
+}
+
+#team-query-form {
   display: flex;
-  flex-wrap: nowrap;
   justify-content: space-evenly;
-  font-family: 'Montserrat';
-  margin: 15px;
 }
 
 #list-container {

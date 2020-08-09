@@ -4,8 +4,8 @@ User can select a country with a national or official football team, and then th
 # To Do
 - [x] Complete About section
 - [x] Add images and make About section aesthetically pleasing
-* Make sure selected countries show up on map (in light blue) - ADD French-Guiana's players - ADD Tahiti's players (French Polynesia) - ADD Nigeria's players - ADD Peru - ADD Samoa - ADD Sri Lanka
-* Add in info about date the data was scraped - FIX margin around this
+- [x] Make sure selected countries show up on map (in light blue) - ADD French-Guiana's players - ADD Tahiti's players (French Polynesia) - ADD Nigeria's players - ADD Peru - ADD Samoa - ADD Sri Lanka
+- [x] Add in info about date the data was scraped - FIX margin around this
 - [x] Make the site mobile-responsive
 * Clean up files and file structure
 * Find out how to set up analytics (or just how to check them)
