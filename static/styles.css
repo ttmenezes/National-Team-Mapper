@@ -119,6 +119,7 @@ section {
 .squad-container {
   display: flex;
   justify-content: center;
+  max-height: 40vh;
 }
 
 .team-url {
