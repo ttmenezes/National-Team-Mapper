@@ -140,6 +140,7 @@ section {
 }
 
 #bs-logo{
+  height: auto;
   width: 90%;
 }
 
@@ -157,6 +158,7 @@ section {
 
 #france-squad {
   width: 85%;
+  height: auto;
 }
 
 #legend {
@@ -203,6 +205,7 @@ section {
 
 #py-logo {
   width: 40%;
+  height: auto;
 }
 
 #team-selector {
@@ -238,6 +241,7 @@ section {
 
 #zizou {
   width: 35%;
+  height: auto;
 }
 
 @media only screen and (max-width: 768px) {
