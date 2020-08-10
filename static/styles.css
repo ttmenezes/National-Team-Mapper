@@ -35,6 +35,8 @@ header {
 
 img {
   height: auto;
+  max-height: 100%;
+  max-height: fit-content;
   background-size: cover;
   background-position: center center;
 }
