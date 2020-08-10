@@ -5,7 +5,6 @@ const playerList = document.getElementById('player-list');
 
 // handle selector selection
 teamSelector.addEventListener('change', (e) => {
-  console.log(e.target.value);
   teamForm.setAttribute('action', `/${e.target.value}`);
 });
 
@@ -33,12 +32,3 @@ function unitedKingdomEdgeCase(countryCode) {
     countryCode === 'ND'
   );
 }
-
-window.addEventListener('resize', () => {
-  console.log(
-    'width: ' +
-      document.documentElement.clientWidth +
-      '   height: ' +
-      document.documentElement.clientHeight
-  );
-});
