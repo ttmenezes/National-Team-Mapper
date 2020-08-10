@@ -209,7 +209,6 @@
 
   {% if team_id %}
   <script type="text/javascript">
-    // console.log('{{ roster_data | tojson | safe}}');
     const roster = JSON.parse('{{ roster_data | tojson | safe}}');
     const team_id = JSON.parse('{{ team_id | tojson | safe}}');
 
@@ -229,9 +228,6 @@
       if (!playerOriginCount[pbcountry]) playerOriginCount[pbcountry] = 1;
       else playerOriginCount[pbcountry]++;
     });
-
-    console.log(values);
-    console.log('2 ' + unitedKingdomEdgeCase(team_id));
 
     if (unitedKingdomEdgeCase(team_id)) values['GB'] = '1';
     else values[team_id] = '1';

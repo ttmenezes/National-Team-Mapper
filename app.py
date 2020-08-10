@@ -105,8 +105,6 @@ def get_team(teamID):
             'birth_country': player.birth_country
         })
 
-    print(rosterList)
-
     return render_template('index.html', team_data=result, roster_data=rosterList, team_id=teamID)
 
 
@@ -128,47 +126,3 @@ def get_product(teamID):
 # Run Server
 if __name__ == '__main__':
     app.run(debug=True)
-
-# Create a Product
-# @app.route('/product', methods=['POST'])
-# def add_product():
-#     name = request.json['name']
-#     description = request.json['description']
-#     price = request.json['price']
-#     qty = request.json['qty']
-
-#     new_product = Team(name, description, price, qty)
-
-#     db.session.add(new_product)
-#     db.session.commit()
-
-#     return product_schema.jsonify(new_product)
-
-# Update a product
-# @app.route('/product/<id>', methods=['PUT'])
-# def update_product(id):
-#     product = Team.query.get(id)
-
-#     name = request.json['name']
-#     description = request.json['description']
-#     price = request.json['price']
-#     qty = request.json['qty']
-
-#     product.name = name
-#     product.description = description
-#     product.price = price
-#     product.qty = qty
-
-#     db.session.commit()
-
-#     return product_schema.jsonify(product)
-
-
-# Delete = Product
-# @app.route('/product/<id>', methods=['DELETE'])
-# def delete_product(id):
-#     product = Team.query.get(id)
-#     db.session.delete(product)
-#     db.session.commit()
-
-#     return product_schema.jsonify(product)

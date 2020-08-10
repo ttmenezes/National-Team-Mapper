@@ -29,7 +29,7 @@ def addSquad(team_id, teamWikiURL, writer):
     wikiData = requests.get(teamWikiURL)
     wikiSoup = BeautifulSoup(wikiData.text, 'html.parser')
 
-    # If you want to access just the current roster, then use this section of code
+    # IF you want to access just the current roster, then use this section of code
     # squadRoster = wikiSoup.find(id='Current_squad')
     # nextEls = squadRoster.next_elements
     # for el in nextEls:
@@ -38,7 +38,7 @@ def addSquad(team_id, teamWikiURL, writer):
     #         break
     # playerList = roster.find_all("tr", class_="nat-fs-player")
 
-    # otherwise, if you want to also include recent call-ups, then use this line
+    # OTHERWISE, if you want to also include recent call-ups, then use this line
     playerList = wikiSoup.find_all("tr", class_="nat-fs-player")
 
     for playerRow in playerList:

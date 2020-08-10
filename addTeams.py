@@ -5,7 +5,7 @@ import csv
 with open('teams.csv', newline='') as f:
 
     db = app.db
-
+    print(db)
     reader = csv.reader(f)
     for row in reader:
         id = row[0]
