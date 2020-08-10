@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+a {
+  color: #4e7e6f;
+}
+
 body {
   display: flex;
   font-family: 'Montserrat';
