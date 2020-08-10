@@ -33,6 +33,12 @@ header {
   justify-content: center;
 }
 
+img {
+  height: auto;
+  background-size: cover;
+  background-position: center center;
+}
+
 section {
   color: #4e7e6f;
 }
