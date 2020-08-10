@@ -26,7 +26,7 @@
         </div>
         <div id="query-container">
           <form id="team-query-form">
-            <select autofocus id="team-selector">
+            <select id="team-selector">
               {% for team in team_data %} {% if team_id and team.id ==
                 team_id%}
               <option selected="selected" value="{{team.id}}">{{team.name}}</option>
