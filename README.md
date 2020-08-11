@@ -31,7 +31,7 @@ python3 app.py
 
 ### Production deployment is visible at http://nationalteam.tech
 
-## Frameworks and Libraries Used
+## Frameworks and Libraries
 * Beautiful Soup (python)
 * Flask (python)
 * jVectorMap (javascript)
