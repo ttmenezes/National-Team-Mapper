@@ -1,8 +1,10 @@
 # National-Team-Mapper
 User can select a country with a national or official football team, and then they can view a map of where the players on that team were born.
 
-This project was inspire by a research presentation about France's national football team. The presentation outlined how players with heritage from
+This project was inspired by a research presentation about France's national football team. The presentation outlined how players with heritage from
 current and former colonies and territories are ubiquitous in France's squad and largely responsible for the recent successes of the team.
+
+I wanted to dig deeper into this topic and see how other imperial states have leveraged current and former colonies to strengthen their national teams today. Hence, I built a program which scrapes the roster data for each national team and records the birthplaces of its players (if available on Wikipedia). I then built a full-stack web application using Flask which displays a vector map showing a visual representation of the potentially fragmented origins of players on a given national team.
 
 ## Quick Start
 Run `writeTeams.py` which uses the country-code data from `country_codes.csv` to write to `teams.csv` to record a country's ISO-code, its name, and the Wikipedia site for its national football team.
