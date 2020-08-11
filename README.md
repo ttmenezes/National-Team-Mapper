@@ -1,34 +1,36 @@
 # National-Team-Mapper
 User can select a country with a national or official football team, and then they can view a map of where the players on that team were born.
 
-# To Do
-- [x] Complete About section
-- [x] Add images and make About section aesthetically pleasing
-- [x] Make sure selected countries show up on map (in light blue) - ADD French-Guiana's players - ADD Tahiti's players (French Polynesia) - ADD Nigeria's players - ADD Peru - ADD Samoa - ADD Sri Lanka
-- [x] Add in info about date the data was scraped - FIX margin around this
-- [x] Make the site mobile-responsive
-- [x] Clean up files and file structure
-* Find out how to set up analytics (or just how to check them)
-* Deploy the app to a hosting service (Likely linode)
+This project was inspire by a research presentation about France's national football team. The presentation outlined how players with heritage from
+current and former colonies and territories are ubiquitous in France's squad and largely responsible for the recent successes of the team.
 
-```python
-with open('teams.csv', newline='') as f:
-
-    db = app.db
-
-    reader = csv.reader(f)
-    for row in reader:
-        id = row[0]
-        name = row[1]
-        team_wiki_url = row[2]
-
-        new_team = app.Team(id, name, team_wiki_url)
-
-        db.session.add(new_team)
-        db.session.commit()
+## Quick Start
+Run `writeTeams.py` which uses the country-code data from `country_codes.csv` to write to `teams.csv` to record a country's ISO-code, its name, and the Wikipedia site for its national football team.
+```
+python3 writeTeams.py
+```
+Run `sanitizeTeams.py` to check which teams do not have a Wikipedia page that follows the typical URL format (https://en.wikipedia.org/wiki/${country}_national_football_team) after running this, go through and update or remove the URLs which do not lead to the correct Wikipedia page for a given national team.
+```
+python3 sanitizeTeams.py
+```
+Run `getSquad.py` which goes through every national team in `teams.csv` and scrapes the birthplaces for each player on a given team from their individual Wikipedia page. This data is then written to `players.csv`.
+```
+python3 getSquad.py
+```
+Run `addTeams.py` and `addPlayers.py` to add the team and player data to the app's sqlite database `db.sqlite`.
+```
+python3 addTeams.py
+python3 addPlayers.py
+```
+Either run a development server via `app.py` or deploy this Flask app to production.
+```
+python3 app.py
 ```
 
-# Sources
-France squad photo: https://www.quora.com/What-would-France-national-football-team-do-without-African-origin-players
-BeautifulSoup logo: https://funthon.wordpress.com/2017/05/21/beautiful-soup-4/
-Algeria flag: https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/900px-Flag_of_Algeria.svg.png
+### Production deployment is visible at http://nationalteam.tech
+
+## Sources
+* Javascript vector map library: https://jvectormap.com/
+* France squad photo: https://www.quora.com/What-would-France-national-football-team-do-without-African-origin-players
+* BeautifulSoup logo: https://funthon.wordpress.com/2017/05/21/beautiful-soup-4/
+* Algeria flag: https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/900px-Flag_of_Algeria.svg.png
