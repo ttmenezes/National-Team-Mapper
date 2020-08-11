@@ -14,6 +14,7 @@ function addPlayerToList(playerData) {
   const playerWiki = document.createElement('a');
   playerWiki.className = 'player-name-text';
   playerWiki.href = playerData.wiki;
+  playerWiki.target = '_blank';
   playerWiki.textContent = playerData.name;
   const birthplaceEl = document.createElement('li');
   birthplaceEl.className = 'birthplace-item-text';

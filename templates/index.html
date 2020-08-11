@@ -40,7 +40,7 @@
         <div class="selected-team">
           {% for team in team_data %} {% if team_id and team.id == team_id%}
           <h2>
-            <a class="team-url" href="{{team.team_wiki_url}}">
+            <a class="team-url" target="_blank" href="{{team.team_wiki_url}}">
               {{team.name}}
             </a>
           </h2>
@@ -73,7 +73,7 @@
       <h1>About</h1>
       <p>
         This project was inspired by the presentation from
-        <a href="https://romancestudies.duke.edu/people/profile/laurent-dubois">Laurent Dubois</a> at
+        <a target="_blank" href="https://romancestudies.duke.edu/people/profile/laurent-dubois">Laurent Dubois</a> at
         the 2019 Princeton Soccer Conference. His talk outlined how France's
         imperial history is reflected in their national team through players hailing
         from current and former colonies. He emphasized the role of these players in
@@ -89,16 +89,17 @@
       </p>
       <p>
         Thus, I created a Python program to scrape (using
-        <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a>)
+        <a target="_blank" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a>)
         the roster data for each national team
         off of Wikipedia. The program then scrapes and records the birthplaces of the players on a given
-        team, and this data is represented visually on the <a href="https://jvectormap.com/">map</a> above.
+        team, and this data is represented visually on the <a target="_blank" href="https://jvectormap.com/">map</a>
+        above.
       </p>
       <div id="logos-container">
-        <a class="logo-a" href="https://www.python.org/">
+        <a class="logo-a" target="_blank" href="https://www.python.org/">
           <img id="py-logo" style="max-height: 20vh;" loading="lazy" src="../static/assets/python.png" alt="Python">
         </a>
-        <a class="logo-a" href=" https://funthon.wordpress.com/2017/05/21/beautiful-soup-4/">
+        <a class="logo-a" target="_blank" href=" https://funthon.wordpress.com/2017/05/21/beautiful-soup-4/">
           <img id="bs-logo" style="max-height: 20vh;" src="../static/assets/beautiful-soup.png" loading="lazy"
             alt="Beautiful Soup">
         </a>
@@ -126,8 +127,8 @@
         </li>
         <li>
           The high number of Turkish national team players born in Germany reflects German policies of
-          <a
-            href="https://en.wikipedia.org/wiki/Turks_in_Germany#:~:text=This%20was%20partly%20due%20to,profile%20than%20the%20German%20population.">
+          <a href="https://en.wikipedia.org/wiki/Turks_in_Germany#:~:text=This%20was%20partly%20due%20to,profile%20than%20the%20German%20population."
+            target="_blank">
             labor recruitment and, later, family reunification
           </a>
         </li>
@@ -176,30 +177,31 @@
   <section id="credit">
     <div>
       <h2>Credit</h2>
-      <a class="credit-url"
+      <a class="credit-url" target="_blank"
         href="https://www.quora.com/What-would-France-national-football-team-do-without-African-origin-players">
         France vector art (traced from image)
       </a>
       <br>
-      <a class="credit-url" href="https://qph.fs.quoracdn.net/main-qimg-20c935639fcd9792f35712debf86726f.webp">
+      <a class="credit-url" target="_blank"
+        href="https://qph.fs.quoracdn.net/main-qimg-20c935639fcd9792f35712debf86726f.webp">
         Zinedine Zidane vector art (traced from image)
       </a>
       <br>
-      <a class="credit-url" href="https://funthon.wordpress.com/2017/05/21/beautiful-soup-4/">
+      <a class="credit-url" target="_blank" href="https://funthon.wordpress.com/2017/05/21/beautiful-soup-4/">
         Beautiful Soup logo
       </a>
       <br>
-      <a class="credit-url"
+      <a class="credit-url" target="_blank"
         href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/900px-Flag_of_Algeria.svg.png">
         Algerian flag
       </a>
       <br>
-      <a class="credit-url" href="https://jvectormap.com/">
+      <a class="credit-url" target="_blank" href="https://jvectormap.com/">
         JavaScript map library (jVector Map)
       </a>
     </div>
     <div>
-      <a href="https://github.com/ttmenezes/National-Team-Mapper">
+      <a target="_blank" href="https://github.com/ttmenezes/National-Team-Mapper">
         <h2 class="credit-url">Code</h2>
         <img class="credit-url" src="https://img.icons8.com/fluent/48/000000/github.png" />
       </a>
