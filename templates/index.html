@@ -13,7 +13,11 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% if team_id %}
+  <title>National Team Map - {{team_id}}</title>
+  {% else %}
   <title>National Team Map</title>
+  {% endif %}
   <link rel="icon" href="https://img.icons8.com/windows/32/000000/globe.png" />
   <link rel="stylesheet" href="../static/styles.css" />
   <link rel="stylesheet" href="../static/map/jquery-jvectormap-2.0.5.css" type="text/css" media="screen" />
