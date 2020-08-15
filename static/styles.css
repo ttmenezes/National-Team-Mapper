@@ -224,6 +224,7 @@ section {
 #logos-container {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   padding: 30px;
 }
 
@@ -287,10 +288,5 @@ section {
   }
   #list-container {
     overflow: visible;
-  }
-  #zizou {
-    /* width: 50vw;
-    height: auto;
-    max-width: 90%; */
   }
 }
