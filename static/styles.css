@@ -38,9 +38,8 @@ header {
 }
 
 img {
-  height: auto;
-  max-height: 50vh;
-  max-height: fit-content;
+  /* max-height: 50vh;
+  max-height: fit-content; */
   background-size: cover;
   background-position: center center;
 }
@@ -153,8 +152,8 @@ section {
 }
 
 #bs-logo{
-  height: auto;
-  width: 90%;
+  height: 30%;
+  width: auto;
 }
 
 #credit {
@@ -170,8 +169,8 @@ section {
 }
 
 #france-squad {
-  width: 85%;
-  height: auto;
+  height: 35vh;
+  width: auto;
 }
 
 #legend {
@@ -192,6 +191,19 @@ section {
   align-items: center;
 }
 
+#name-credit {
+  color: #4e7e6f;
+  padding-left: 5px;
+}
+
+#name-credit a {
+  text-decoration: none;
+}
+
+#name-credit a:hover {
+  background-color: #9bb3abc2;
+}
+
 #query-container {
   padding: 15px 0px;
 }
@@ -210,6 +222,7 @@ section {
 #logos-container {
   display: flex;
   align-items: center;
+  padding: 30px;
 }
 
 #player-list {
@@ -217,8 +230,8 @@ section {
 }
 
 #py-logo {
-  width: 40%;
-  height: auto;
+  height: 40vh;
+  width: auto;
 }
 
 #team-selector {
@@ -253,8 +266,8 @@ section {
 }
 
 #zizou {
-  width: 35%;
-  height: auto;
+  height: 35vh;
+  width: auto;
 }
 
 @media only screen and (max-width: 768px) {
