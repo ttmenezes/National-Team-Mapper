@@ -154,6 +154,7 @@ section {
 #bs-logo{
   height: 30%;
   width: auto;
+  max-width: 100%;
 }
 
 #credit {
@@ -171,6 +172,7 @@ section {
 #france-squad {
   height: 35vh;
   width: auto;
+  max-width: 100%;
 }
 
 #legend {
@@ -232,6 +234,7 @@ section {
 #py-logo {
   height: 40vh;
   width: auto;
+  max-width: 100%;
 }
 
 #team-selector {
@@ -268,6 +271,7 @@ section {
 #zizou {
   height: 35vh;
   width: auto;
+  max-width: 85%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -283,5 +287,10 @@ section {
   }
   #list-container {
     overflow: visible;
+  }
+  #zizou {
+    /* width: 50vw;
+    height: auto;
+    max-width: 90%; */
   }
 }
