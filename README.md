@@ -44,3 +44,6 @@ python3 app.py
 * France squad photo: https://www.quora.com/What-would-France-national-football-team-do-without-African-origin-players
 * Beautiful Soup logo: https://funthon.wordpress.com/2017/05/21/beautiful-soup-4/
 * Algeria flag: https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/900px-Flag_of_Algeria.svg.png
+
+## Ideas for Future Work
+- Trace heritage of players by querying for surname origin
